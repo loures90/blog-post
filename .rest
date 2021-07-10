@@ -1,0 +1,9 @@
+POST http://localhost:3003/blogpost/signup
+Content-Type: application/json
+
+{
+    "name": "Fernando Teste",
+    "username": "teste2@teste.com",
+    "password": "testeteste"
+}
+###
