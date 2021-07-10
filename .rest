@@ -3,7 +3,7 @@ Content-Type: application/json
 
 {
     "name": "Fernando Teste",
-    "username": "teste1@teste.com",
+    "username": "teste5@teste.com",
     "password": "testeteste"
 }
 ###
@@ -11,7 +11,18 @@ POST http://localhost:3003/blogpost/login
 Content-Type: application/json
 
 {
-    "username": "teste1@teste.com",
+    "username": "teste5@teste.com",
     "password": "testeteste"
+}
+###
+
+POST http://localhost:3003/blogpost/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI1OTU0MTU3LCJleHAiOjE2MjU5NTc3NTd9.5dafKH3J-y7zoHz5DNde1J_Oe-akTdDXa2ypHBxAP94
+
+{
+    "title": "title",
+    "content": "content",
+    "slug": "slug"
 }
 ###

@@ -20,8 +20,6 @@ describe('SERVICES', () => {
         it('should verify a not valid token', () => {
             try {
                 const result = verifyToken("Token invalid")
-                assert.equal(result, { error: 'jwt malformed' })
-
             } catch (error) {
                 assert.equal(error.message, 'Invalid token')
             }
