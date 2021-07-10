@@ -2,7 +2,7 @@
 import assert from 'assert';
 import { generateToken, verifyToken } from '../src/services/authenticator.js';
 import idGenerator from '../src/services/generateId.js';
-import { decrypt, encrypt } from '../src/services/hassManager.js';
+import { hashCompare, hashCreator } from '../src/services/hashManager.js';
 
 describe('SERVICES', () => {
     describe('Id generator', () => {
@@ -20,23 +20,29 @@ describe('SERVICES', () => {
         it('should verify a not valid token', () => {
             try {
                 const result = verifyToken("Token invalid")
-                assert.equal(result, {error:'jwt malformed'})
-                
+                assert.equal(result, { error: 'jwt malformed' })
+
             } catch (error) {
                 assert.equal(error.message, 'Invalid token')
             }
         })
-     })
-     describe('Hash Manager', () => {
-         const hash = encrypt("Hello World")
-        it('should generate a hashManager recover the original word', () => {
-            const word = decrypt(hash)
+    })
+    describe('Hash Manager', () => {
+        let hash =''
+        let compare =''
+        it('should generate a hashManager ', async () => {
+            hash = await hashCreator("Hello World")
             assert.equal(typeof hash, 'string')
-            assert.equal(word, 'Hello World')
+            assert.equal(hash !== "Hello World", true)
         })
-        it('should return empty for an invalid hash', () => {
-                const word = decrypt("wrong hash")
-                assert.equal(word.length, 0)
+        it('should  recover the original word', async () => {
+            compare= await hashCompare("Hello World",hash)
+            assert.equal(compare, true)
         })
-     })
+        it('should return empty for an invalid hash', async () => {
+            const hash = await hashCreator("Hello World")
+            const word = await hashCompare("wrong hash",hash)
+            assert.equal(word, false)
+        })
+    })
 })

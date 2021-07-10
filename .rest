@@ -3,7 +3,15 @@ Content-Type: application/json
 
 {
     "name": "Fernando Teste",
-    "username": "teste2@teste.com",
+    "username": "teste1@teste.com",
+    "password": "testeteste"
+}
+###
+POST http://localhost:3003/blogpost/login
+Content-Type: application/json
+
+{
+    "username": "teste1@teste.com",
     "password": "testeteste"
 }
 ###
