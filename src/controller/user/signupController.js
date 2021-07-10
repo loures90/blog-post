@@ -5,7 +5,7 @@ import signupData from "../../data/user/signupData.js";
 async function signupController (req,res) {
     try {
     const result = await signupBusiness(req.body, signupData)
-        res.status(201).send(result)
+        res.status(201).send({message:result})
     } catch (error) {
         res.status(400).send({error:error.message})
     }
