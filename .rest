@@ -2,9 +2,9 @@ POST http://localhost:3003/blogpost/signup
 Content-Type: application/json
 
 {
-    "name": "Fernando Teste",
-    "username": "teste5@teste.com",
-    "password": "testeteste"
+    "name": "usuário teste",
+    "username": "usuário teste",
+    "password": "TesteTeste"
 }
 ###
 
@@ -12,28 +12,47 @@ POST http://localhost:3003/blogpost/login
 Content-Type: application/json
 
 {
-    "username": "teste5@teste.com",
-    "password": "testeteste"
+    "username": "usuário teste",
+    "password": "TesteTeste"
 }
 ###
 
 POST http://localhost:3003/blogpost/
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI2MDEwNDYzLCJleHAiOjE2MjYwMTQwNjN9.kvJ3j6IZTxTU5Bez3ZVUb3sr3sQCYc2Vyna3gWbsRBk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNzM5Nzk2MjYtM2JkMC00Yzg3LTg1MDQtMGMxZWQwMDYyNzIyIiwiaWF0IjoxNjI2MDIwNDI5LCJleHAiOjE2MjYwMjQwMjl9.0YvllAofrX-oTOnvWSGXk6l6trrp64WHU3vHeCYk8b0
 
 {
-    "title": "title",
-    "content": "content",
-    "slug": "slug"
+    "title": "Título de teste",
+    "content": "Conteúdo de teste",
+    "slug": "slug de teste"
 }
 ###
 
 get http://localhost:3003/blogpost/
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI2MDEwNDYzLCJleHAiOjE2MjYwMTQwNjN9.kvJ3j6IZTxTU5Bez3ZVUb3sr3sQCYc2Vyna3gWbsRBk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNzM5Nzk2MjYtM2JkMC00Yzg3LTg1MDQtMGMxZWQwMDYyNzIyIiwiaWF0IjoxNjI2MDIwNDI5LCJleHAiOjE2MjYwMjQwMjl9.0YvllAofrX-oTOnvWSGXk6l6trrp64WHU3vHeCYk8b0
 
 ###
-get http://localhost:3003/blogpost/60797a78-b986-48a5-9139-1c3dba21ee9
+
+get http://localhost:3003/blogpost/daa7b19e-2acf-4787-a946-1b922e4553a3
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI2MDEwNDYzLCJleHAiOjE2MjYwMTQwNjN9.kvJ3j6IZTxTU5Bez3ZVUb3sr3sQCYc2Vyna3gWbsRBk
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNzM5Nzk2MjYtM2JkMC00Yzg3LTg1MDQtMGMxZWQwMDYyNzIyIiwiaWF0IjoxNjI2MDIwNDI5LCJleHAiOjE2MjYwMjQwMjl9.0YvllAofrX-oTOnvWSGXk6l6trrp64WHU3vHeCYk8b0
+
+###
+
+DELETE http://localhost:3003/blogpost/daa7b19e-2acf-4787-a946-1b922e4553a3
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNzM5Nzk2MjYtM2JkMC00Yzg3LTg1MDQtMGMxZWQwMDYyNzIyIiwiaWF0IjoxNjI2MDIwNDI5LCJleHAiOjE2MjYwMjQwMjl9.0YvllAofrX-oTOnvWSGXk6l6trrp64WHU3vHeCYk8b0
+###
+
+
+PATCH http://localhost:3003/blogpost/a138dfe9-6eb5-469b-b6a1-913b774b3bc8
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNzM5Nzk2MjYtM2JkMC00Yzg3LTg1MDQtMGMxZWQwMDYyNzIyIiwiaWF0IjoxNjI2MDIwNDI5LCJleHAiOjE2MjYwMjQwMjl9.0YvllAofrX-oTOnvWSGXk6l6trrp64WHU3vHeCYk8b0
+
+{
+    "title": "Título de teste atualizado",
+    "content": "Conteúdo de teste atualizado",
+    "slug": "slug de teste atualizado"
+}
 ###

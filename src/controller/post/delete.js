@@ -4,7 +4,7 @@ import { verifyToken } from "../../services/authenticator.js";
 
 async function deletePostContoller(req, res) {
     try {
-        const id = req.body.id
+        const id = req.params.id
         const token = req.headers.authorization
         const result = await deletePostBusiness(id, token, deletePostData, verifyToken)
         res.status(200).send({ message: result })

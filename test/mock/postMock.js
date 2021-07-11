@@ -51,3 +51,24 @@ export const getPostDataMock = (id) => {
 export const getPostDataMockError = (id) => {
     throw { message: "SQL ERROR" }
 }
+
+export const deletePostDataMockError = (id) => {
+    throw { message: "SQL ERROR" }
+}
+
+export const deletePostDataMock = (id) => {
+    if (id != "abc123")
+        return { "affectedRows": 0 }
+    return { "affectedRows": 1 }
+
+}
+export const editPostDataMockError = (id) => {
+    throw { message: "SQL ERROR" }
+}
+
+export const editPostDataMock = (post) => {
+    if (post.id != "abc123")
+        return { "affectedRows": 0 }
+    return { "affectedRows": 1 }
+
+}

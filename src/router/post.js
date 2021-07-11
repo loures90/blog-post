@@ -8,8 +8,8 @@ import getPostContoller from '../controller/post/getPost.js';
 export const postRouter = express.Router();
 
 postRouter.post('/', createPostController)
-postRouter.patch('/edit', editPostContoller)
-postRouter.delete('/', deletePostContoller)
+postRouter.patch('/:id', editPostContoller)
+postRouter.delete('/:id', deletePostContoller)
 postRouter.get('/', getAllPostsContoller)
 postRouter.get('/:id', getPostContoller)
 

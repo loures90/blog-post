@@ -1,11 +1,24 @@
-const editPostBusiness = async (post, token, createPostData, verifyToken) => {
+const editPostBusiness = async (post, token, editPostData, verifyToken) => {
     try {
         // Validando Token
         if (!verifyToken(token))
             throw new Error('Forbidden')
-        // Validando inputs
+        //Validate inputs
+        if (!post.id || post.id == "")
+            throw new Error("Id not valid")
+        if (!post.title || post.title == "")
+            throw new Error('Title is not valid')
+        if (!post.content || post.content == "")
+            throw new Error('Content is not valid')
+        if (!post.slug || post.slug == "")
+            throw new Error('Slug is not valid')
 
-        return await editPostData(post)
+        const result = await editPostData(post)
+        //check if post was updated
+        if (result.affectedRows < 1)
+            throw new Error('Post not found')
+
+        return 'Success'
     } catch (error) {
         throw error
     }
