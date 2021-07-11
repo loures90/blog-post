@@ -35,6 +35,8 @@ export const getAllPostsDataMockError = () => {
     throw { message: "SQL ERROR" }
 }
 export const getPostDataMock = (id) => {
+    if (id != "abc123")
+        return []
     return [
         {
             "id": "abc123",
@@ -45,6 +47,7 @@ export const getPostDataMock = (id) => {
         },
     ]
 }
-export const getPostDataMockEmpty = (id) => {
-    return []
+
+export const getPostDataMockError = (id) => {
+    throw { message: "SQL ERROR" }
 }

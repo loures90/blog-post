@@ -3,7 +3,12 @@ const getPostBusiness = async (id, token, getPostData, verifyToken) => {
         // Validando Token
         if (!verifyToken(token))
             throw new Error('Forbidden')
-        return await getPostData(id)
+        if (!id)
+            throw new Error("Id not valid")
+        const post = await getPostData(id)
+        if (!post.length)
+            throw new Error("Post not found")
+        return post
     } catch (error) {
         throw error
     }

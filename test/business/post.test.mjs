@@ -2,7 +2,9 @@
 import assert from 'assert';
 import createPostBusiness from "../../src/business/post/create.js"
 import getAllPostsBusiness from "../../src/business/post/getAll.js"
-import { createPostDataMock, createPostDataMockError, getAllPostsDataMock, getAllPostsDataMockError, verifyTokenMock, verifyTokenMockError } from '../mock/postMock.js';
+import getPostBusiness from "../../src/business/post/getPost.js"
+
+import { createPostDataMock, createPostDataMockError, getAllPostsDataMock, getAllPostsDataMockError, getPostDataMock, getPostDataMockError, verifyTokenMock, verifyTokenMockError } from '../mock/postMock.js';
 
 describe("POST", () => {
     describe("CREATE POST", () => {
@@ -85,7 +87,7 @@ describe("POST", () => {
         })
     })
 
-    describe("GET ALL POST", () => {
+    describe("GET ALL POSTS", () => {
         it("Should return an error because it has no token", async () => {
             try {
                 await getAllPostsBusiness("", getAllPostsDataMock, verifyTokenMock)
@@ -95,17 +97,62 @@ describe("POST", () => {
         })
         it("Should return an sql error", async () => {
             try {
-                const token='token'    
+                const token = 'token'
                 await getAllPostsBusiness(token, getAllPostsDataMockError, verifyTokenMock)
             } catch (error) {
                 assert.equal(error.message, 'SQL ERROR')
             }
         })
         it("Should return an array of posts", async () => {
-            const token='token'    
+            const token = 'token'
             const res = await getAllPostsBusiness(token, getAllPostsDataMock, verifyTokenMock)
-                assert.equal(res.length, 2)
-                assert.equal(res[0].id, 'abc123')
+            assert.equal(res.length, 2)
+            assert.equal(res[0].id, 'abc123')
+        })
+    })
+
+    describe("GET POST", () => {
+        it("Should return an error because it has no token", async () => {
+            try {
+                const id = "abc123"
+                await getPostBusiness(id, "", getPostDataMock, verifyTokenMock)
+            } catch (error) {
+                assert.equal(error.message, 'Invalid token')
+            }
+        })
+        it("Should return an sql error", async () => {
+            try {
+                const token = 'token'
+                const id = "abc123"
+                await getPostBusiness(id, token, getPostDataMockError, verifyTokenMock)
+            } catch (error) {
+                assert.equal(error.message, 'SQL ERROR')
+            }
+        })
+        it("Should return an error id is empty", async () => {
+            try {
+                const token = 'token'
+                const id = ""
+                await getPostBusiness(id, token, getPostDataMockError, verifyTokenMock)
+            } catch (error) {
+                assert.equal(error.message, 'Id not valid')
+            }
+        })
+        it("Should return an array with one post", async () => {
+            const token = 'token'
+            const id = "abc123"
+            const res = await getPostBusiness(id, token, getPostDataMock, verifyTokenMock)
+            assert.equal(res.length, 1)
+            assert.equal(res[0].id, 'abc123')
+        })
+        it("Should return an empty array because it does not exist", async () => {
+            try {
+                const token = 'token'
+                const id = "aaa222"
+                await getPostBusiness(id, token, getPostDataMock, verifyTokenMock)
+            } catch (error) {
+                assert.equal(error.message, 'Post not found')
+            }
         })
     })
 })
