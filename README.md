@@ -38,22 +38,22 @@ CREATE TABLE blog_post(
 ##### url: /blogpost/signup
 ##### body
 {
-    name:"name"
-    username:"username"
+    name:"name",
+    username:"username",
     password: "password"
 }
 * name, username e passwords não podem ser nulos.
 * password tem que ter mais de 6 caracteres.
 * O username é único para cada usuário.
 ##### Resposta:
-Em caso de sucesso: {message:Signup Succed} 
+Em caso de sucesso: {message: "Signup Succed"} 
 
 #### 2.login - Login de usuários
 ##### Método: post
 ##### url: /blogpost/login
 ##### body
 {
-    username:"username"
+    username:"username",
     password: "password"
 }
 * username e passwords não podem ser nulos.
