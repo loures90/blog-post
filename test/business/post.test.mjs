@@ -1,7 +1,8 @@
 'use strict'
 import assert from 'assert';
 import createPostBusiness from "../../src/business/post/create.js"
-import { createPostDataMock, createPostDataMockError, verifyTokenMock, verifyTokenMockError } from '../mock/postMock.js';
+import getAllPostsBusiness from "../../src/business/post/getAll.js"
+import { createPostDataMock, createPostDataMockError, getAllPostsDataMock, getAllPostsDataMockError, verifyTokenMock, verifyTokenMockError } from '../mock/postMock.js';
 
 describe("POST", () => {
     describe("CREATE POST", () => {
@@ -10,7 +11,7 @@ describe("POST", () => {
             try {
                 await createPostBusiness(post, createPostDataMock, verifyTokenMock)
             } catch (error) {
-                assert.equal(error.message, 'Invalid Token')
+                assert.equal(error.message, 'Invalid token')
             }
         })
         it("it should return an error because post has not valid token", async () => {
@@ -81,6 +82,30 @@ describe("POST", () => {
             const post = { title: "dsfadsfa", slug: "dfasdfasd", content: "blabla", created_by: "abc123", token: "token" }
             const res = await createPostBusiness(post, createPostDataMock, verifyTokenMock)
             assert.equal(res, 'Post Creation Succeed')
+        })
+    })
+
+    describe("GET ALL POST", () => {
+        it("Should return an error because it has no token", async () => {
+            try {
+                await getAllPostsBusiness("", getAllPostsDataMock, verifyTokenMock)
+            } catch (error) {
+                assert.equal(error.message, 'Invalid token')
+            }
+        })
+        it("Should return an sql error", async () => {
+            try {
+                const token='token'    
+                await getAllPostsBusiness(token, getAllPostsDataMockError, verifyTokenMock)
+            } catch (error) {
+                assert.equal(error.message, 'SQL ERROR')
+            }
+        })
+        it("Should return an array of posts", async () => {
+            const token='token'    
+            const res = await getAllPostsBusiness(token, getAllPostsDataMock, verifyTokenMock)
+                assert.equal(res.length, 2)
+                assert.equal(res[0].id, 'abc123')
         })
     })
 })

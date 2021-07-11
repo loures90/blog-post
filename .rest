@@ -7,6 +7,7 @@ Content-Type: application/json
     "password": "testeteste"
 }
 ###
+
 POST http://localhost:3003/blogpost/login
 Content-Type: application/json
 
@@ -18,11 +19,21 @@ Content-Type: application/json
 
 POST http://localhost:3003/blogpost/
 Content-Type: application/json
-Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI1OTU0MTU3LCJleHAiOjE2MjU5NTc3NTd9.5dafKH3J-y7zoHz5DNde1J_Oe-akTdDXa2ypHBxAP94
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI2MDEwNDYzLCJleHAiOjE2MjYwMTQwNjN9.kvJ3j6IZTxTU5Bez3ZVUb3sr3sQCYc2Vyna3gWbsRBk
 
 {
     "title": "title",
     "content": "content",
     "slug": "slug"
 }
+###
+
+get http://localhost:3003/blogpost/
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI2MDEwNDYzLCJleHAiOjE2MjYwMTQwNjN9.kvJ3j6IZTxTU5Bez3ZVUb3sr3sQCYc2Vyna3gWbsRBk
+
+###
+get http://localhost:3003/blogpost/60797a78-b986-48a5-9139-1c3dba21ee9
+Content-Type: application/json
+Authorization: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJkYXRhIjoiNDAwYTA2YzgtYmQ0Mi00ZmQ4LTgzNjMtZjkyNmQzNDBiOWI2IiwiaWF0IjoxNjI2MDEwNDYzLCJleHAiOjE2MjYwMTQwNjN9.kvJ3j6IZTxTU5Bez3ZVUb3sr3sQCYc2Vyna3gWbsRBk
 ###
