@@ -4,6 +4,7 @@ const createPostBusiness = async (post, createPostData, verifyToken) => {
     try {
         // Validando Token
         post.created_by = verifyToken(post.token)
+        // Validando inputs
         if (!post.created_by)
             throw new Error('Forbidden')
         if (!post.title || post.title == "")

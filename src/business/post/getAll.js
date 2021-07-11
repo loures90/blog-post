@@ -1,8 +1,7 @@
 const getAllPostsBusiness = async (token, getAllPostsData, verifyToken) => {
     try {
         // Validando Token
-        if (!verifyToken(token))
-            throw new Error('Forbidden')
+        verifyToken(token)
 
         return await getAllPostsData()
     } catch (error) {

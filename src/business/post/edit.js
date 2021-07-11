@@ -1,8 +1,8 @@
 const editPostBusiness = async (post, token, editPostData, verifyToken) => {
     try {
         // Validando Token
-        if (!verifyToken(token))
-            throw new Error('Forbidden')
+        verifyToken(token)
+        
         //Validate inputs
         if (!post.id || post.id == "")
             throw new Error("Id not valid")
@@ -13,6 +13,7 @@ const editPostBusiness = async (post, token, editPostData, verifyToken) => {
         if (!post.slug || post.slug == "")
             throw new Error('Slug is not valid')
 
+        // O usuário pode alterar posts de terceiros
         const result = await editPostData(post)
         //check if post was updated
         if (result.affectedRows < 1)
